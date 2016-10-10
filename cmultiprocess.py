@@ -45,14 +45,14 @@ if __name__ == '__main__':
     qp2.join()
 	
 	
-    # parent_conn, child_conn = mp.Pipe()	
-    # p = mp.Process(target=f, args=(child_conn,))
-    # p.start()
-    # print(parent_conn.recv())   # prints "[42, None, 'hello']"
-    # p.join()
+    parent_conn, child_conn = mp.Pipe()	
+    p = mp.Process(target=f, args=(child_conn,))
+    p.start()
+    print(parent_conn.recv())   # prints "[42, None, 'hello']"
+    p.join()
 	
-    # p = mp.Process(target=fa, args=('bob',))
-    # p.start()
-    # info('main line')
-    # p.join()
+    p = mp.Process(target=fa, args=('bob',))
+    p.start()
+    info('main line')
+    p.join()
 	
